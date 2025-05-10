@@ -1,0 +1,109 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme by default */
+    --background: 240 25% 8%;
+    --foreground: 220 40% 98%;
+
+    --card: 240 25% 12%;
+    --card-foreground: 220 40% 98%;
+
+    --popover: 240 25% 12%;
+    --popover-foreground: 220 40% 98%;
+
+    --primary: 252 80% 65%;
+    --primary-foreground: 220 40% 98%;
+
+    --secondary: 190 100% 50%;
+    --secondary-foreground: 220 40% 98%;
+
+    --muted: 240 25% 18%;
+    --muted-foreground: 240 5% 75%;
+
+    --accent: 320 100% 50%;
+    --accent-foreground: 220 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 25% 18%;
+    --input: 240 25% 18%;
+    --ring: 252 80% 65%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 240 25% 10%;
+    --sidebar-foreground: 240 5% 90%;
+    --sidebar-primary: 252 80% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 25% 15%;
+    --sidebar-accent-foreground: 240 5% 90%;
+    --sidebar-border: 240 25% 15%;
+    --sidebar-ring: 252 80% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-web3-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .web3-card {
+    @apply bg-web3-card rounded-xl border border-border/30 shadow-lg;
+    backdrop-filter: blur(10px);
+  }
+
+  .web3-glow {
+    @apply relative;
+  }
+
+  .web3-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 20px -5px theme('colors.web3.primary');
+    opacity: 0.4;
+    z-index: -1;
+  }
+
+  .wallet-address {
+    @apply font-mono text-sm bg-background/50 px-2 py-1 rounded border border-border/50;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-web3-secondary to-web3-accent bg-clip-text text-transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.web3.background');
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: theme('colors.web3.primary');
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.web3.secondary');
+}
